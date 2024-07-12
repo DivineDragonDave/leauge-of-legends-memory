@@ -1,0 +1,138 @@
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 30px;
+  height: 95vh;
+  background: linear-gradient(
+    250deg,
+    rgb(157, 118, 57) 8%,
+    rgb(0, 41, 68) 100%
+  );
+  background-repeat: no-repeat;
+}
+
+.deck {
+  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(5, 160px);
+  grid-template-rows: repeat(4, 200px);
+  margin: 10px;
+  width: 80%;
+  height: 100%;
+  gap: 20px;
+}
+
+.card {
+  position: relative;
+  width: 170px;
+  height: 170px;
+  perspective: 1000px;
+}
+
+img {
+  border-radius: 8px;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.card {
+  transform-style: preserve-3d;
+  transition: transform 800ms;
+}
+
+.front,
+.back {
+  border-radius: 8px;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #efe3d591;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backface-visibility: hidden;
+  box-shadow: 2px 2px 10px rgba(63, 63, 63);
+  cursor: pointer;
+}
+
+.back {
+  transform: rotateY(180deg);
+  background-color: #efe3d54f;
+}
+
+.is-flipped {
+  transform: rotateY(180deg);
+}
+
+.card.hidden {
+  display: none;
+}
+
+#matched-panel {
+  position: absolute;
+  right: 5%;
+  top: 10px;
+  width: 170px; /* Bredd av ett kort */
+}
+
+#matched-panel .card {
+  visibility: visible !important;
+  display: block;
+  margin-top: -90px; /* Detta kommer att låta korten överlappa med 100px. Justera värdet för önskad överlappningsnivå. */
+}
+
+#matched-panel .card:first-child {
+  margin-top: 0;
+}
+
+.timer {
+  color: #ffd700;
+}
+
+.flips {
+  color: #ffd700;
+}
+
+h1 {
+  color: #9d7539;
+}
+
+p {
+  color: #9d7539;
+}
+
+button {
+  margin-top: 10px;
+  border-radius: 15px;
+  color: #40e0d0;
+  background: linear-gradient(20deg, #9d7639 20%, #002944 80%);
+}
+
+@media screen and (max-width: 500px) {
+  .deck {
+    grid-template-columns: repeat(4, 85px);
+    grid-template-rows: repeat(6, 85px);
+    gap: 5px;
+  }
+  .card {
+    width: 85px;
+    height: 85px;
+  }
+  .start-screen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  body {
+    flex-direction: column;
+  }
+  #matched-panel {
+    position: relative;
+    top: -100px;
+    right: 5%;
+    width: 170px; /* Bredd av ett kort */
+  }
+}
